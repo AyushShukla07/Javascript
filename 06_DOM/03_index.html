@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom | chai aur code</title>
+</head>
+<body style="background-color: #212121;color: white;">
+    <div class="parent">
+        <div class="day">monday</div>
+        <div class="day">tuesday</div>
+        <div class="day">wednesday</div>
+        <div class="day">thursday</div>
+    </div>
+</body>
+<script>
+    const parent=document.querySelector('.parent')
+    console.log(parent)
+    console.log(parent.children)//node list
+    console.log(parent.children[1].innerHTML)
+
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML)  
+    }
+
+    parent.children[1].style.color="orange"
+
+    console.log(parent.firstElementChild)
+    console.log(parent.lastElementChild)
+
+
+    const dayone=document.querySelector('.day')
+    console.log(dayone);
+    console.log(dayone.parentElement);
+    console.log(dayone.nextElementSibling);
+
+    console.log("NODES:",parent.childNodes);
+    //here node list of nine elements will be returned these include every text node and data node
+
+    //text node is formed when we press enter key or provide any data from keyboard as text
+
+    //creating elements
+
+    const div=document.createElement('div');
+    console.log(div)
+    div.className="main";
+    div.id=Math.round(Math.random()*10+1);
+    div.setAttribute("title","generated title");
+    div.style.backgroundColor="green";
+    div.style.padding="12px";
+
+    //attaching element (here div) to document
+
+    div.innerText="chai aur code"
+
+    const addText=document.createTextNode("chai aur code")
+    div.appendChild(addText)
+
+    //here both lines of code will do the same job but the last one is more optimised approach as it directly appends on document rather than bringing the reference and then again copying them and going on to copy it to document as in first line of code
+
+    document.body.appendChild(div)
+
+</script>
+</html>
