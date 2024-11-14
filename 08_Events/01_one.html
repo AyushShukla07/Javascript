@@ -1,0 +1,126 @@
+//Events in javascript
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //events are run in a sequential manner
+    //we do not provide script code in html as it will create problem when we will scale our projects
+    
+    //on click event
+    document.getElementById('owl').onclick=function(){
+        alert("owl clicked")
+    }
+    //this event will also create problem so we can use event listners in this place and also this does not provide us with enough features
+
+    //Event Listner
+
+    document.getElementById('owl').addEventListener('click',function(){
+        alert("owl was clicked")
+    },false)
+
+    //other ways were
+    //attachEvents-in case of internet explorar
+    //jQuery-using .on
+
+    //event object
+
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log(e)
+    },false)
+
+    //here the object return contains many values and some important ones are
+    //typr,timeStamp,defaultPrevented,target,toElement,srcElement,currentTarget,clientX,clientY,screenX,screenY,altkey,ctrlkey,shiftkey,keycode
+
+    //Event Propogation
+
+    //owl is inside url in dom tree
+
+    //Bubbling example
+
+    document.getElementById('images').addEventListener('click',function(){
+        console.log("clicked inside the url")
+    },false)
+
+    document.getElementById('owl').addEventListener('click',function(){
+        console.log("owl was clicked")
+    },false)
+
+    //here owl was clicked will be printed first and then the other one
+
+    //in order to stop bubbling we use following
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log("owl was clicked")
+        e.stopPropogation()
+    },false)
+    //here e is referred to as event capturing
+   
+
+
+    //capturing mode
+
+    document.getElementById('images').addEventListener('click',function(){
+        console.log("clicked inside the url")
+    },true)
+
+    document.getElementById('owl').addEventListener('click',function(){
+        console.log("owl was clicked")
+    },true)
+
+    //here clicked inside url will be printed first
+     
+
+    //changing default behaviour
+
+    document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault()
+        e.stopPropagation()
+        console.log("google was clicked")
+    },false)
+
+    //false is used for event propogation
+
+   //project based approach
+
+   //we will click on photo and photo will disappear
+
+   document.querySelector('#images').addEventListener('click',function(e){
+    console.log(e.target.parentNode)
+    //if we will remove target directly then bullet point will be left so we access parent node to remove the entire element
+    let removeIt=e.target.parentNode
+    removeIt.remove()
+    or
+    //e.target.parentNode.removechild(removeIt)
+
+    //if we will click on google link then entire everything will be removed because parent node opf li is ul
+
+    // to prevent this we use the following method
+   })
+
+   document.querySelector('#images').addEventListener('click',function(e){
+    console.log(e.target.tagName)
+    if(e.target.tagName==='IMG'){
+        let removeIt=e.target.parentNode
+    removeIt.remove()
+    }
+   })
+
+</script>
+</html>

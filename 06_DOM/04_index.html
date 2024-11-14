@@ -1,0 +1,50 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom |chai aur code</title>
+</head>
+<body style="background-color: #212121;color: #fff;">
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const li=document.createElement('li')
+        li.innerHTML=`${langName};
+        document.querySelector('.language').appendChild(li)
+    }
+        addLanguage("python")
+        addLanguage("typescript")
+
+    function optimized(langName){
+         const li=document.createElement('li');
+         li.appendChile(document.createTextNode(langName))
+         document.querySelector('.language').appendChild(li)
+    }
+         optimized('golang')
+
+         //second function is more optimised and try to use it more frequently
+         //in first function we have to traverse the entire dom tree to perform our task
+
+</script>
+</html> -->
+
+//edit
+
+const second_lang=document.querySelector("li:nth-child(2)")
+//second_lang.innerHTML="mojo"//un-optimised approach
+const newli=document.createElement('li')
+newli.textContent="mojo"
+second_lang.replaceWith(newli)
+
+//another way
+
+const first_lang=document.querySelector("li:first-child")
+first_lang.outerHTML='<li>Typescript</li>'
+
+//remove
+const last_lang=document.querySelector('li:last-child')
+last_lang.remove()

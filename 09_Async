@@ -1,0 +1,25 @@
+JavaScript features
+
+-synchronous-task continued in a synchronous manner
+-single threaded
+
+Execution Context
+
+-executes one line of code at a time
+-console log 1
+-console log 2
+-each operation waits for the last one to complete before executing
+-call stack is formed
+-heap memory
+
+Blocking code
+
+-blocks the flow of program
+-read file sync
+
+NonBlocking Code
+
+-does not block execution
+-read file async
+
+ 
