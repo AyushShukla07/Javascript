@@ -13,7 +13,7 @@
     thor:"hammer",
     spiderman:"sling",
 
-    getSpiderPower:function{
+    getSpiderPower:function(){
         console.log(`spidy power is ${this.spiderman}`)
     }
  }
