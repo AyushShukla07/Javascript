@@ -1,4 +1,4 @@
- class User{
+class User{
     constructor(username){
         this.username=username
     }
@@ -14,5 +14,16 @@
         this.email=email
         this.password=password
     }
-    
+    addCourse(){
+        console.log(`A new cousre was added by ${this.username}`)
+    }
  }
+ const chai=new Teacher("chai","chai@Teacher.com","123")
+
+ chai.addCourse()
+ chai.logMe()
+const masalaChai = new User("masalaChai")
+
+masalaChai.logMe()
+
+console.log(chai instanceof User);
