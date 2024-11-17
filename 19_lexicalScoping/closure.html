@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button class="green">green</button>
+    <button class="orange">orange</button>
+    <script>
+
+        //lexical scoping
+
+
+        function init(){
+            let name="morzilla"
+            function displayName(){
+                console.log(name)
+            }
+            displayName()
+        }
+        init()
+
+    //Another example
+
+     function outer(){
+        let username = "hitesh"
+        console.log("OUTER", secret);
+        function inner(){
+            let secret = "my123"
+            console.log("inner", username);
+        }
+        function innerTwo(){
+            console.log("innerTwo", username);
+            console.log(secret);
+        }
+        inner()
+        innerTwo()
+
+    }
+    outer()
+    console.log("TOO OUTER", username);
+
+    //closure
+    
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+    //here function in not returned singularly but the entire lexical scope is returned meaning the outer function will be returned to the memory although only the inner function is being called
+
+    //one practical example
+
+    // document.getElementById("orange").onclick = function(){
+        //     document.body.style.backgroundColor = `orange`
+        // }
+        // document.getElementById("green").onclick = function(){
+        //     document.body.style.backgroundColor = `green`
+        // }
+
+        function clickHandler(color){
+            // document.body.style.backgroundColor = `${color}`
+
+            return function(){
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+
+        document.getElementById('orange').onclick = clickHandler("orange")
+        document.getElementById('green').onclick = clickHandler("green")
+
+       //here the code wont work if we will not use lexical scoping
+       //the inner function has access of color
+       //if lexical scoping will not be use then the code will not work how we want it to work here
+
+    </script>
+</body>
+</html>
+
+//inner function can  acess values of variables defined in outer function
+//outer functions cannot acesses the values of variables declared in inner functions
+//sibling functions can also not acesses the values defined inside each of the functions
